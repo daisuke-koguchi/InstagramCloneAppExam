@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user.id)
+      binding.pry
+      redirect_to users_path
     else
       flash.now[:notice] = 'ログインに失敗しました'
       render :new 
@@ -18,7 +19,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     flash[:notice] = 'ログアウトしました'
-    redirect_to user_path(use.id)
+    redirect_to users_path
   end
   
 end

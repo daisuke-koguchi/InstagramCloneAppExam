@@ -4,7 +4,12 @@
     <tbody>
       <tr>
         <th style="width: 20 %"> プロフィール写真</th>
-        <td><%= image_tag @user.photo.url %></td>
+        <% if @user.photo?%>
+        <% binding.pry %>
+        <td><%= image_tag(@user.photo.url) %></td>
+        <% else %>
+        <td><%= image_tag('noimage.png', width: '50%', height:'50%') %></td>
+        <% end %>
       </tr>
       <tr>
         <th >名前</th>

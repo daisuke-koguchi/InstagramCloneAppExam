@@ -12,16 +12,16 @@
     <h1>プロフィール</h1>
     <div class="col-md-4">
       <ul class="list-group">
+        <li><%= link_to "ログイン", new_session_path, class:'list-group-item list-group-item-action' %></li>
         <li><%= link_to "サインアップ・プロフィール投稿", new_user_path, class:'list-group-item list-group-item-action' %></li>
       </ul>
     </div>
   </div>
-
-
+  <br>
   <table class="table">
     <thead>
       <tr>
-        <th>プロフィール写真</th>
+        <th style="width: 20%">プロフィール写真</th>
         <th>名前</th>
         <th>プロフィール詳細</th>
         <th>プロフィール編集</th>
@@ -31,13 +31,17 @@
     <tbody>
       <% @users.each do |user|%>
         <tr>
-          <% if user.photo?%>
-          <td><%= image_tag(user.photo.thumb.url)%></td>
-          <% end%>
-          <td><%= user.name %></td>
-          <td><%= link_to "プロフィール確認", user_path(user.id), class:'btn btn-secondary' %></td>
-          <td><%= link_to "プロフィール編集", edit_user_path(user.id), class:'btn btn-secondary' %></td>
-          <td><%= link_to "プロフィール削除", user_path(user.id), method: :delete,  class:'btn btn-secondary'%></td>
+          <% if user.photo? %>
+            <td><%= image_tag(user.photo.thumb.url)%></td>
+          <% else %>
+            <td><%= image_tag('noimage.png', width: '50%', height:'50%')%></td>
+          <% end %>
+            <td><%= user.name %></td>
+            <td><%= link_to "プロフィール確認", user_path(user.id), class:'btn btn-secondary' %></td>
+          <% #if user.id == current_user.id %>
+            <td><%= link_to "プロフィール編集", edit_user_path(user.id), class:'btn btn-secondary' %></td>
+            <td><%= link_to "プロフィール削除", user_path(user.id), method: :delete,  class:'btn btn-secondary'%></td>
+          <% #end %>
         </tr>
       <% end %>
     </tbody>
