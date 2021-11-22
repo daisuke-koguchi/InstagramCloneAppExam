@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   #後でskip_before_actionを追加する
   #skip_before_action :login_required, only: [:new, :create]
+  def index
+    @users = User.all
+  end
   def new
     @user = User.new
   end

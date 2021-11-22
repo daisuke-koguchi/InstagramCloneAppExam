@@ -35,3 +35,6 @@ html{
   height: 100px !important;
   background-color: #343A40 !important;
 }
+ul{
+  list-style: none !important;
+}
