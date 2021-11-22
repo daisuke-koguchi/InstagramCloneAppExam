@@ -11,6 +11,15 @@
   <body>
     <div class="header">
       <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <ul class="navbar-nav ml-auto">
+          <% if logged_in?%>
+          <li class="navbar-item"><%= link_to "プロフィール確認", user_path(current_user.id) ,class:'nav-link'%></li>
+          <li class="navbar-item"><%= link_to "ログアウト", session_path(current_user.id), method: :delete,class:'nav-link' %></li>
+          <% else %>
+          <li class="navbar-item"><%= link_to "サインアップ", new_user_path ,class:'nav-link'%></li>
+          <li class="navbar-item"><%= link_to "ログイン", new_session_path,class:'nav-link' %></li>
+          <% end %>
+        </ul> 
       </nav>
     </div>
     <div class="jumbotron jumbotron-fluid">
