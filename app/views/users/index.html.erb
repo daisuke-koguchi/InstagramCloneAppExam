@@ -37,11 +37,11 @@
             <td><%= image_tag('noimage.png', width: '50%', height:'50%')%></td>
           <% end %>
             <td><%= user.name %></td>
-            <td><%= link_to "プロフィール確認", user_path(user.id), class:'btn btn-secondary' %></td>
-          <% #if user.id == current_user.id %>
+            <td><%= link_to "プロフィール詳細", user_path(user.id), class:'btn btn-secondary' %></td>
+          <% if logged_in? && user.id == current_user.id %>
             <td><%= link_to "プロフィール編集", edit_user_path(user.id), class:'btn btn-secondary' %></td>
             <td><%= link_to "プロフィール削除", user_path(user.id), method: :delete,  class:'btn btn-secondary'%></td>
-          <% #end %>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
