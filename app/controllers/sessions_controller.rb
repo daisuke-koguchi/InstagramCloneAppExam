@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  #後でskip_before_actionを追加する
+  #skip_before_action :login_required, only: [:new, :create]
   def new
   end
 
@@ -11,6 +13,12 @@ class SessionsController < ApplicationController
       flash.now[:notice] = 'ログインに失敗しました'
       render :new 
     end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    flash[:notice] = 'ログアウトしました'
+    redirect_to user_path(use.id)
   end
   
 end
