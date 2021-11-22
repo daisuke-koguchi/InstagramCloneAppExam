@@ -1,4 +1,5 @@
 <div class="container">
+  <%= notice %>
   <div class="image_content row">
     <h1>写真投稿</h1>
     <div class="col-md-8">
@@ -9,11 +10,11 @@
   </div>
   <div class="user_content">
     <h1>プロフィール</h1>
-    <div class="col-md-8">
+    <div class="col-md-3">
       <ul class="list-group">
-        <li><%= link_to "プロフィール投稿",new_user_path, class:'list-group-item list-group-item-action'%></li>
-        <li><%= link_to "プロフィール確認",user_path(current_user.id), class:'list-group-item list-group-item-action'%></li>
-        <li>プロフィール編集</li>
+        <li><%= link_to "プロフィール投稿", new_user_path, class:'list-group-item list-group-item-action'%></li>
+        <li><%= link_to "プロフィール確認", user_path(current_user.id), class:'list-group-item list-group-item-action'%></li>
+        <li><%= link_to "プロフィール編集", edit_user_path(current_user.id)%>プロフィール編集</li>
       </ul>
     </div>
   </div>
