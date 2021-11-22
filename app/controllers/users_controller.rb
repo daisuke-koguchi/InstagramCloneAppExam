@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      binding.pry
+      redirect_to user_path(@user.id), notice: 'プロフィール投稿しました'
     else
       render :new 
     end
@@ -29,14 +30,22 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_path
+      redirect_to users_path, notice: 'プロフィール編集しました'
     else
       render :edit
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path, notice: 'プロフィール削除しました'
+  end
+
   private
   # 写真機能作成後、permitに:photoを追加
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, 
+                                :photo, :photo_chach)
   end
 end

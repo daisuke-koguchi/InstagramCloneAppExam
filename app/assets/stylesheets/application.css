@@ -14,13 +14,10 @@
  *= require_self
  */
 
-html{
-  position: relative;
-}
 .jumbotron{
   background:linear-gradient(135deg, rgba(246, 255,0,0.8),rgba(255, 0, 161, 0.8)),url(top_image.jpg) !important;
   background-size: cover !important;
-  min-height:600px;
+  min-height:800px;
   margin-top:100px;
 }
 .container{
@@ -29,11 +26,8 @@ html{
 .navbar{
   height: 100px !important;
 }
-.footer > .container-fluid{
-  position: absolute;
-  bottom:0;
-  height: 100px !important;
-  background-color: #343A40 !important;
+.footer .navbar{
+  height: 50px !important;
 }
 ul{
   list-style: none !important;
