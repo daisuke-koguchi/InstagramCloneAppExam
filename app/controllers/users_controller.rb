@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #後でskip_before_actionを追加する
-  #skip_before_action :login_required, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  #skip_before_action :login_required, only: [:index, :new, :create, :show]
   def index
     @users = User.all
   end
@@ -19,15 +19,12 @@ class UsersController < ApplicationController
   
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to users_path, notice: 'プロフィール編集しました'
     else
@@ -36,15 +33,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, notice: 'プロフィール削除しました'
   end
 
   private
-  # 写真機能作成後、permitに:photoを追加
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, 
                                 :photo, :photo_chach)
+  end
+  def set_user
+    @user = User.find(params[:id])
   end
 end
