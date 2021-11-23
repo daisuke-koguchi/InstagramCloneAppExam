@@ -16,17 +16,23 @@ class BlogsController < ApplicationController
     if  @blog.save
       redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました"
     else
-      flash.now[:notice] ="ブログ投稿失敗しました"
+      flash.now[:notice] = "ブログ投稿失敗しました"
       render :new
     end
   end
 
   def edit
-    @blog = Blog.find(parms[:id])
+    @blog = Blog.find(params[:id])
   end
 
   def update
-    
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を更新しました"
+    else
+      flash.now[:notice] = "ブログ投稿失敗しました"
+      render :edit
+    end
   end
 
   private

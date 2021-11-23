@@ -1,7 +1,7 @@
 <div class="container">
-  <% notice %>
+  <%= notice %>
 <h1>ブログ・写真一覧</h1>
-<%= link_to "ブログ・写真投稿",new_blog_path, class: 'btn btn-secondary' %>
+<%= link_to "新規投稿",new_blog_path, class: 'btn btn-secondary' %>
 <br>
 <table class="table">
   <thead>
@@ -9,10 +9,10 @@
       <th>投稿写真</th>
       <th>プロフィール名</th>
       <th>タイトル</th>
-      <th>内容</th>
-      <th>詳細</th>
-      <th>編集</th>
-      <th>削除</th>
+      <th>投稿内容</th>
+      <th>投稿詳細</th>
+      <th>投稿編集</th>
+      <th>投稿削除</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
       <td><%= blog.title %></td>
       <td><%= blog.content %></td>
       <td><%= link_to '詳細', blog_path(blog.id) ,class:'btn btn-secondary' %></td>
-      <td>編集リンク</td>
+      <td><%= link_to '編集', edit_blog_path(blog.id) ,class:'btn btn-secondary' %></td>
       <td>削除リンク</td>
     </tr>
     <% end %>

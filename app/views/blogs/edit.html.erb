@@ -1,33 +1,4 @@
 <div class="container">
-  <% if @blog.errors.any? %>
-  <div class="error-explanation">
-    <h2><%= @blog.errors.count%>件のエラーがあります。</h2>
-    <ul>
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end%>
-    </ul>
-  </div>
-  <% end %>
-  <% flash.each do |key, value|%>
-    <%= content_tag(:div, value, class: key) %>
-  <% end %>
-<h1>投稿画面</h1>
-<%= form_with(model: @blog, local: true) do |form| %>
-  <div class= "form-group"%>
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control'%>
-  </div>
-  <div class="form-group">
-    <%= form.label :content%>
-    <%= form.text_field :content, class: 'form-control'%>
-  </div>
-  <div>
-    <p>写真投稿</p>
-    <p>写真投稿へリンク</p>
-  </div>
-  <%= form.submit "投稿する" %>
-<% end %>
-  <br>
-  <%= link_to "投稿トップページへ", blogs_path, class:'btn btn-secondary' %>
+  <h1>投稿編集</h1>
+  <%= render 'form' %>
 </div>
