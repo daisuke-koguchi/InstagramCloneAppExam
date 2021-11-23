@@ -18,17 +18,13 @@
   background:linear-gradient(135deg, rgba(246, 255,0,0.8),rgba(255, 0, 161, 0.8)),url(top_image.jpg) !important;
   background-size: cover !important;
   min-height:800px;
-  margin-top:100px;
-}
-.container{
-  background-color:transparent !important;
+  margin-top:50px;
+  padding-top:0 !important;
 }
 .navbar{
-  height: 100px !important;
-}
-.footer .navbar{
   height: 50px !important;
 }
 ul{
   list-style: none !important;
+  padding-left: 0 !important;
 }

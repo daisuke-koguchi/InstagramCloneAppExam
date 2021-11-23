@@ -1,25 +1,38 @@
-<div class="container">
+<div class="container-fluid">
+  <h2>Boot Canvasに撮った写真に気持ちを添えて、みんなと共有しよう！</h2>
+  <br>
   <%= notice %>
-  <div class="image_content row">
-    <h1>写真投稿</h1>
-    <div class="col-md-8">
+  <div class="menu_content row">
+    <div class="menu_list col-md-3">
+      <h5>Boot Canvas menu </h5>
       <ul class="list-group">
-        <li>写真投稿</li>
+        <li><%= link_to "写真投稿", blogs_path, class:'list-group-item list-group-item-action' %></li>
+        <li><%= link_to "サインアップ・プロフィール投稿", new_user_path, class:'list-group-item list-group-item-action' %></li>
+        <% if logged_in?%>
+        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class:'list-group-item list-group-item-action' %></li>
+        <% else %>
+        <li><%= link_to "ログイン", new_session_path, class:'list-group-item list-group-item-action' %></li>
+        <% end %>
       </ul>
     </div>
-  </div>
-  <div class="user_content">
-    <h1>プロフィール</h1>
-    <h4>サインアップしてプロフィールを登録してからログインしてください！</h4>
-    <h4>登録したプロフィールは「プロフィール詳細」で確認できるよ！</h4>
-    <div class="col-md-4">
-      <ul class="list-group">
-        <li><%= link_to "サインアップ・プロフィール投稿", new_user_path, class:'list-group-item list-group-item-action' %></li>
-        <li><%= link_to "ログイン", new_session_path, class:'list-group-item list-group-item-action' %></li>
-      </ul>
+    <div class="menu_message col-md-4 ml-auto">
+      <h5>Boot Canvasの使い方</h5>
+      <div class="alert alert-light">
+        <ul>
+          <li>まずはじめに</li>
+          <li>左のリストからサインアップしてプロフィール登録しよう！</li>
+          <li>ログインして写真を投稿してみよう！</li>
+          <br>
+          <li>プロフィールについて</li>
+          <li>みんなのプロフィールはプロフィール一覧で確認できるよ！</li>
+          <li>投稿したユーザーのプロフィールを確認してみよう！</li>
+          <li>プロフィールは本人だけが編集・削除できるよ！</li>
+        <ul>
+      </div>
     </div>
   </div>
   <br>
+  <h2>みんなのプロフィール</h2>
   <table class="table">
     <thead>
       <tr>
@@ -48,5 +61,4 @@
       <% end %>
     </tbody>
   <table>
-
 </div>

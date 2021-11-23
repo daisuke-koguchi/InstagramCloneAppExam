@@ -51,7 +51,6 @@ class BlogsController < ApplicationController
   end
 
   private
-  #あとでpermitに:image,:image_chachを追加
   def blog_params
     params.require(:blog).permit(:title, :content,:image, :image_cache)
   end
