@@ -10,6 +10,7 @@
     <%= form.hidden_field :image_cache %>
     <%= form.hidden_field :title %>
     <%= form.hidden_field :content%>
+    <P>プロフィール名：<%= @blog.user.name %></P>
     <P>タイトル:<%= @blog.title %></P>
     <P>内容:<%= @blog.content %></P>
     <%= form.submit "登録する"%>

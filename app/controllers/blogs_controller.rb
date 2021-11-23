@@ -1,14 +1,15 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: [:show, :edit,:destroy, :update]
   def index
     @blogs = Blog.all
   end
 
   def show
-    @blog = Blog.find(params[:id])
   end
 
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?
   end
 
@@ -18,12 +19,15 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     if params[:back]
       render :new 
     else
-      if  @blog.save
+      if @blog.save
+        binding.pry
         redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました"
       else
+        binding.pry
         flash.now[:notice] = "ブログ投稿失敗しました"
         render :new
       end
@@ -31,11 +35,9 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
       redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を更新しました"
     else
@@ -45,7 +47,6 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
     redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を削除しました"
   end
@@ -53,5 +54,8 @@ class BlogsController < ApplicationController
   private
   def blog_params
     params.require(:blog).permit(:title, :content,:image, :image_cache)
+  end
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 end

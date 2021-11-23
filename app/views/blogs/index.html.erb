@@ -23,12 +23,14 @@
       <% else %>
         <td><%=image_tag('noimage.png',width: '70%', height:'70%')%></td>
       <% end %>
-      <td>プロフィール名</td>
-      <td><%= blog.title %></td>
-      <td><%= blog.content %></td>
-      <td><%= link_to '詳細', blog_path(blog.id) ,class:'btn btn-secondary' %></td>
-      <td><%= link_to '編集', edit_blog_path(blog.id) ,class:'btn btn-secondary' %></td>
-      <td><%= link_to '削除', blog_path(blog.id), method: :delete ,class:'btn btn-secondary',data: {confirm: "本当に削除しますか？"} %></td>
+        <td><%= blog.user.name %></td>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><%= link_to '詳細', blog_path(blog.id) ,class:'btn btn-secondary' %></td>
+      <% if blog.user_id == current_user.id %>
+        <td><%= link_to '編集', edit_blog_path(blog.id) ,class:'btn btn-secondary' %></td>
+        <td><%= link_to '削除', blog_path(blog.id), method: :delete ,class:'btn btn-secondary',data: {confirm: "本当に削除しますか？"} %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
