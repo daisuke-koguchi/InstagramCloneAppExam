@@ -35,6 +35,12 @@ class BlogsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+    redirect_to blogs_path
+  end
+
   private
   #あとでpermitに:image,:image_chachを追加
   def blog_params
