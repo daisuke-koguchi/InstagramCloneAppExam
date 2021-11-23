@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id])
   end
 
   def new
@@ -12,7 +13,6 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    binding.pry
     if  @blog.save
       redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました"
     else
@@ -22,6 +22,11 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find(parms[:id])
+  end
+
+  def update
+    
   end
 
   private

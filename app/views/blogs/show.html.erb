@@ -1,2 +1,31 @@
-<h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
+<div class="container">
+<h1>ブログ詳細</h1>
+<div>
+  <p>写真</p>
+</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>プロフィール名</th>
+      <td>プロフィール名</td>
+    </tr>
+    <tr>
+      <th>タイトル</th>
+      <td><%= @blog.title %></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td><%= @blog.content %></td>
+    </tr>
+    <tr>
+      <th>投稿日時</th>
+      <td><%= @blog.created_at%></td>
+    </tr>
+    <tr>
+      <th>編集日時</th>
+      <td>編集日時</td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "投稿トップページへ", blogs_path, class:'btn btn-secondary' %>
+</div>

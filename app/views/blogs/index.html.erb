@@ -22,7 +22,7 @@
       <td>プロフィール名</td>
       <td><%= blog.title %></td>
       <td><%= blog.content %></td>
-      <td>詳細リンク</td>
+      <td><%= link_to '詳細', blog_path(blog.id) ,class:'btn btn-secondary' %></td>
       <td>編集リンク</td>
       <td>削除リンク</td>
     </tr>
