@@ -1,7 +1,14 @@
 <div class="container">
   <%= notice %>
 <h1>ブログ・写真一覧</h1>
+<div class="alert alert-light">
+  <ul>
+    <li>「新規投稿」ボタンを押して写真とブログを投稿しよう！</li>
+    <li>「お気に入り登録写真」ボタンで自分がお気に入りした写真をみることができます！</li>
+  <ul>
+</div>
 <%= link_to "新規投稿",new_blog_path, class: 'btn btn-secondary' %>
+<%= link_to "お気に入り登録した写真をみる",user_like_blogs_path, class:'btn btn-secondary' %>
 <br>
 <table class="table">
   <thead>

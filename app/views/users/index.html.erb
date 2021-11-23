@@ -6,7 +6,9 @@
     <div class="menu_list col-md-3">
       <h5>Boot Canvas menu </h5>
       <ul class="list-group">
-        <li><%= link_to "写真投稿", blogs_path, class:'list-group-item list-group-item-action' %></li>
+        <% if logged_in?%>
+        <li><%= link_to "写真投稿・投稿写真をみる", blogs_path, class:'list-group-item list-group-item-action' %></li>
+        <% end %>
         <li><%= link_to "サインアップ・プロフィール投稿", new_user_path, class:'list-group-item list-group-item-action' %></li>
         <% if logged_in?%>
         <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class:'list-group-item list-group-item-action' %></li>

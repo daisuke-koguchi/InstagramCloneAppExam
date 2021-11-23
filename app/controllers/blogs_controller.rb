@@ -4,7 +4,13 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
 
+  def user_like
+    @blogs = Blog.all 
+    @favorite = current_user.favorites.find_by(blog_id: @blogs.ids)
+  end
+
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def confirm
@@ -24,10 +30,8 @@ class BlogsController < ApplicationController
       render :new 
     else
       if @blog.save
-        binding.pry
         redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました"
       else
-        binding.pry
         flash.now[:notice] = "ブログ投稿失敗しました"
         render :new
       end
@@ -53,7 +57,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content,:image, :image_cache)
+    params.require(:blog).permit(:title, :content,:image, :image_cache, :user_id)
   end
   def set_blog
     @blog = Blog.find(params[:id])
