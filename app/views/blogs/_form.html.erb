@@ -20,10 +20,16 @@
     <%= form.label :content%>
     <%= form.text_field :content, class: 'form-control'%>
   </div>
-  <div>
-    <p>写真投稿</p>
-    <p>写真投稿へリンク</p>
+  <div class="form-group">
+    <%= form.label :image %>
+    <br> 
+    <% if @blog.image? && @blog.image.url%>
+      <%= image_tag(@blog.image.url)%>
+    <% end %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
+  　<br>
   <%= form.submit "投稿する" %>
 <% end %>
   <br>

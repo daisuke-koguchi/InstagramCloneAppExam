@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = Blog.new(blog_params)
-    render new if @blog.invalid?
+    render :new if @blog.invalid?
   end
 
   def new
@@ -47,12 +47,12 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
-    redirect_to blogs_path
+    redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を削除しました"
   end
 
   private
   #あとでpermitに:image,:image_chachを追加
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content,:image, :image_cache)
   end
 end

@@ -1,10 +1,15 @@
 <div class="container">
 <h1>ブログ詳細</h1>
-<div>
-  <p>写真</p>
-</div>
 <table class="table">
   <tbody>
+    <tr>
+      <th>投稿写真</th>
+      <%if @blog.image?%>
+        <td><%= image_tag(@blog.image.url) %></td>
+      <% else %>
+        <%=image_tag('noimage.png',width: '40%', height:'40%')%>
+      <% end %>
+    </tr>
     <tr>
       <th>プロフィール名</th>
       <td>プロフィール名</td>
@@ -19,11 +24,11 @@
     </tr>
     <tr>
       <th>投稿日時</th>
-      <td><%= @blog.created_at%></td>
+      <td><%= @blog.created_at %></td>
     </tr>
     <tr>
       <th>編集日時</th>
-      <td>編集日時</td>
+      <td><%= @blog.updated_at %></td>
     </tr>
   </tbody>
 </table>

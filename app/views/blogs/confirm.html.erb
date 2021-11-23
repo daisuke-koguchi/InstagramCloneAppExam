@@ -1,11 +1,21 @@
 <div class="container">
   <h1>投稿確認画面</h1>
   <%= form_with(model:@blog, local: true, url:blogs_path) do |form| %>
+    <P>投稿写真</P>
+    <% if @blog.image? && @blog.image.url %>
+      <%= image_tag(@blog.image.url) %>
+    <% else %>
+      <%=image_tag('noimage.png',width: '40%', height:'40%')%>
+    <% end %>
+    <%= form.hidden_field :image_cache %>
     <%= form.hidden_field :title %>
     <%= form.hidden_field :content%>
     <P>タイトル:<%= @blog.title %></P>
     <P>内容:<%= @blog.content %></P>
     <%= form.submit "登録する"%>
+  <% end %>
+  <%= form_with(model:@blog, local: true, url:new_blog_path, method:"get") do |form| %>
+    <%= form.hidden_field :image_cache %>
     <%= form.submit "戻る", name: 'back' %>
   <% end %>
 </div>

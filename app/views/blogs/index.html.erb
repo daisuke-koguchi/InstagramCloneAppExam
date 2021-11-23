@@ -6,7 +6,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>投稿写真</th>
+      <th style= "width: 15%" >投稿写真</th>
       <th>プロフィール名</th>
       <th>タイトル</th>
       <th>投稿内容</th>
@@ -18,7 +18,11 @@
   <tbody>
     <% @blogs.each do |blog|%>
     <tr>
-      <td>投稿写真リンクを張って写真表示</td>
+      <% if blog.image? %>
+        <td><%= image_tag(blog.image.thumb.url) %></td>
+      <% else %>
+        <td><%=image_tag('noimage.png',width: '70%', height:'70%')%></td>
+      <% end %>
       <td>プロフィール名</td>
       <td><%= blog.title %></td>
       <td><%= blog.content %></td>
