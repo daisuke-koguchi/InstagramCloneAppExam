@@ -30,7 +30,8 @@ class BlogsController < ApplicationController
       render :new 
     else
       if @blog.save
-        redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました"
+        ContactMailer.contact_mail(@blog).deliver
+        redirect_to blogs_path,notice: "ブログ「#{@blog.title}」を作成しました、写真投稿完了メールを送信しました"
       else
         flash.now[:notice] = "ブログ投稿失敗しました"
         render :new

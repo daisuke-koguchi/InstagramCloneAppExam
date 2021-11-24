@@ -1,5 +1,4 @@
-#Envirionment_secrete
-.ENV
+.env
 # Ignore bundler config.
 /.bundle
 

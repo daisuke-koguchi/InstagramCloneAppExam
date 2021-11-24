@@ -1,0 +1,8 @@
+<h2><%= @blog.user.name%>様</h2>
+<p>この度は、写真を投稿してくださりありがとうございました。<br>
+投稿された写真は以下の通りです。
+</p>
+
+<div><%= image_tag(@blog.image.url)%></div>
+
+<p>今後ともBootCanvasをよろしくお願いいたします。</p>
