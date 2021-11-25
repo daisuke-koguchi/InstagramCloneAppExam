@@ -60,7 +60,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.1)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -90,8 +90,10 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.4)
-    globalid (0.5.2)
+    globalid (0.6.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
@@ -187,7 +189,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.0.3)
+    selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
@@ -198,7 +200,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.4.0)
+    sprockets-rails (3.4.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
@@ -241,15 +243,14 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave
   dotenv-rails
+  faker
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.2)
-  mini_magick
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.1)
-  rexml
   sass-rails (>= 6)
   selenium-webdriver
   spring
