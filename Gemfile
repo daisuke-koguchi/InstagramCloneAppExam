@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 gem 'letter_opener_web'
 gem 'carrierwave'
+gem 'faker'
 gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
