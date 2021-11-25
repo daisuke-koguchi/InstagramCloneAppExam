@@ -2,15 +2,15 @@
   <h3>お気に入りした写真一覧</h3>
   <div class="row">
     <% if @favorite.present? %>
-    <% @blogs.each do |blog| %>
-        <div class="col-md-3 ">
-              <div class="card ">
-          <%= image_tag(blog.image.thumb.url)%>
-          <h4>写真投稿者プロフィール名：<%= blog.user.name%></h4>
+      <%current_user.favorite_blogs.each do |picture| %>
+          <div class="col-md-3 ">
+                <div class="card ">
+            <%= image_tag(picture.image.thumb.url) %>
+            <h4>写真投稿者名<%= picture.user.name %></h4>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
   <br>
   <%= link_to "投稿トップページへ", blogs_path, class:'btn btn-secondary' %>
